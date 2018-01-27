@@ -9,9 +9,9 @@ Vagrant.configure('2') do |config|
     # vb.gui = true
 
     # Customize the amount of memory on the VM:
-    vb.memory = '1024'
+    vb.memory = '4024'
     # Set the number of CPU cores the VM can user:
-    vb.cpus = '2'
+    vb.cpus = '4'
   end
 
   config.vm.provision 'shell', inline: <<-SHELL
@@ -25,6 +25,13 @@ Vagrant.configure('2') do |config|
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     apt-get update
     apt-get install -y docker-ce
+
+    # Install Python Docker
+    easy_install pip
+    pip install docker
+
+    # Grab the AWX repo
+    git clone https://github.com/ansible/awx.git /vagrant/awx
 
   SHELL
 end
