@@ -36,7 +36,7 @@ Vagrant.configure('2') do |config|
     git clone https://github.com/ansible/awx.git /vagrant/awx
 
     # Run the AWX installer
-    ansible-playbook /vagrant/awx/installer/install.yml -i /vagrant/awx/installer/inventory
+    ansible-playbook /vagrant/awx/installer/install.yml -i /vagrant/vagrant_inventory
 
   SHELL
 end
