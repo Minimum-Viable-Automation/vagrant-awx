@@ -12,6 +12,9 @@ Vagrant.configure('2') do |config|
     vb.memory = '4024'
     # Set the number of CPU cores the VM can user:
     vb.cpus = '4'
+    vb.customize ['modifyvm', :id, '--cpuexecutioncap', '90']
+
+    # Configure Networking
     config.vm.network :private_network, ip: '192.168.12.30'
     config.vm.hostname = 'awx.local'
   end
